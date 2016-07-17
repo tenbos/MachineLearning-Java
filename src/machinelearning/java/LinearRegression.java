@@ -18,13 +18,13 @@ public class LinearRegression {
 
     private double m_a;
     private double m_b;
-    private double m_z;
+    private double m_learningRate;
 
-    public LinearRegression(List<Vec2d> data, double a, double b, double z) {
+    public LinearRegression(List<Vec2d> data, double a, double b, double learningRate) {
         m_data = data;
         m_a = a;
         m_b = b;
-        m_z = z;
+        m_learningRate = learningRate;
     }
 
     public void regress() {
@@ -39,8 +39,8 @@ public class LinearRegression {
                 sum2 += (m_a * data.x + m_b) - data.y;
             }
 
-            m_a = m_a - (m_z * sum1);
-            m_b = m_b - (m_z * sum2);
+            m_a = m_a - (m_learningRate * sum1);
+            m_b = m_b - (m_learningRate * sum2);
 
             System.out.println("m_a = " + m_a);
             System.out.println("m_b = " + m_b);
