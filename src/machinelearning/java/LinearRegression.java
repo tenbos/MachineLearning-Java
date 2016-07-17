@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class LinearRegression {
 
-    private final List<Vec2d> m_data;
+    private final List<Vec2d> m_dataSet;
 
     private double m_a;
     private double m_b;
     private double m_learningRate;
 
-    public LinearRegression(List<Vec2d> data, double a, double b, double learningRate) {
-        m_data = data;
+    public LinearRegression(List<Vec2d> dataSet, double a, double b, double learningRate) {
+        m_dataSet = dataSet;
         m_a = a;
         m_b = b;
         m_learningRate = learningRate;
@@ -34,7 +34,7 @@ public class LinearRegression {
             double sum1 = 0.0d;
             double sum2 = 0.0d;
 
-            for (Vec2d data : m_data) {
+            for (Vec2d data : m_dataSet) {
                 sum1 += ((m_a * data.x + m_b) - data.y) * data.x;
                 sum2 += (m_a * data.x + m_b) - data.y;
             }
