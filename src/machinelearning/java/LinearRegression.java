@@ -16,14 +16,19 @@ public class LinearRegression {
 
     private final List<Vec2d> m_dataSet;
 
-    private double m_a;
-    private double m_b;
-    private double m_learningRate;
+    private double m_slope;
+    private double m_intercept;
+    private final double m_learningRate;
 
-    public LinearRegression(List<Vec2d> dataSet, double a, double b, double learningRate) {
+    public LinearRegression(
+            List<Vec2d> dataSet,
+            double slope,
+            double intercept,
+            double learningRate) {
+
         m_dataSet = dataSet;
-        m_a = a;
-        m_b = b;
+        m_slope = slope;
+        m_intercept = intercept;
         m_learningRate = learningRate;
     }
 
@@ -35,18 +40,19 @@ public class LinearRegression {
             double sum2 = 0.0d;
 
             for (Vec2d data : m_dataSet) {
-                sum1 += ((m_a * data.x + m_b) - data.y) * data.x;
-                sum2 += (m_a * data.x + m_b) - data.y;
+                sum1 += ((m_slope * data.x + m_intercept) - data.y) * data.x;
+                sum2 += (m_slope * data.x + m_intercept) - data.y;
             }
 
-            m_a = m_a - (m_learningRate * sum1);
-            m_b = m_b - (m_learningRate * sum2);
+            m_slope = m_slope - (m_learningRate * sum1);
+            m_intercept = m_intercept - (m_learningRate * sum2);
 
-            System.out.println("m_a = " + m_a);
-            System.out.println("m_b = " + m_b);
+            System.out.print("slope = " + m_slope);
+            System.out.print("\t");
+            System.out.println("intercept = " + m_intercept);
         }
 
-        System.out.println("y = " + m_a + "x + " + m_b);
+        System.out.println("y = " + m_slope + "x + " + m_intercept);
     }
 
 }
