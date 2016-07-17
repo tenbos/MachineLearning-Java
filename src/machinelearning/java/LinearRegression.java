@@ -32,9 +32,9 @@ public class LinearRegression {
         m_learningRate = learningRate;
     }
 
-    public void regress() {
+    public void regress(int times) {
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < times; i++) {
 
             double sum1 = 0.0d;
             double sum2 = 0.0d;
